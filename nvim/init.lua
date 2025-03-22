@@ -28,6 +28,5 @@ require("lazy").setup({
 	require("plugins.alpha"),
 	require("plugins.autotag"),
 	require("plugins.test"),
-	require("plugins.vim_tmux_navigator"),
 	require("plugins.comments"),
 })
