@@ -13,3 +13,6 @@ vim.keymap.set("n", "x", '"_x', opts)
 
 -- Toggle line wrapping
 vim.keymap.set("n", "<leader>lw", "<cmd>set wrap!<CR>", opts)
+
+-- Open diagnostic float window
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
