@@ -4,7 +4,7 @@ return {
 
 	config = function()
 		require("oil").setup({
-			default_file_explorer = true,
+			-- default_file_explorer = true,
 			delete_to_trash = true,
 			view_options = {
 				show_hidden = true,
@@ -14,6 +14,8 @@ return {
 				border = "rounded",
 			},
 		})
-		vim.keymap.set("n", "<space>-", require("oil").toggle_float)
+		-- vim.keymap.set("n", "<space>-", require("oil").toggle_float)
 	end,
 }
+
+-- Currently using mini.files for file explorer.

@@ -16,7 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	require("plugins.catppuccin"),
 	require("plugins.lualine"),
-	require("plugins.oil"),
 	require("plugins.treesitter"),
 	require("plugins.telescope"),
 	require("plugins.lsp"),
@@ -29,4 +28,5 @@ require("lazy").setup({
 	require("plugins.autotag"),
 	require("plugins.test"),
 	require("plugins.comments"),
+	require("plugins.mini_files"),
 })

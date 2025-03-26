@@ -1,0 +1,21 @@
+return {
+	"echasnovski/mini.nvim",
+	version = "false",
+	config = function()
+		require("mini.files").setup({
+			options = {
+				permanent_delete = false, -- Move to trash or delete permanently
+				-- ~/.local/share/nvim/mini.files/trash
+				use_as_default_explorer = true, -- Use as default directory explorer
+			},
+		})
+
+		-- Set keymap to open MiniFiles (e.g., using <leader>e)
+		vim.api.nvim_set_keymap(
+			"n",
+			"<leader>-",
+			":lua require('mini.files').open()<CR>",
+			{ noremap = true, silent = true }
+		)
+	end,
+}
