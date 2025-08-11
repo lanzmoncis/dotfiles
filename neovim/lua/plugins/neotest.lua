@@ -15,7 +15,11 @@ return {
 
 		neotest.setup({
 			adapters = {
-				require("neotest-go"),
+				require("neotest-go")({
+					experimental = {
+						test_table = true,
+					},
+				}),
 				require("neotest-vitest"),
 				require("neotest-jest")({
 					jestCommand = "npm test --",
@@ -29,75 +33,43 @@ return {
 		})
 
 		-- Keymaps for Neotest
-		vim.api.nvim_set_keymap(
-			"n",
-			"<leader>tn",
-			":lua require('neotest').run.run()<CR>",
-			{ noremap = true, silent = true }
-		) -- Runs the nearest test.
-		vim.api.nvim_set_keymap(
-			"n",
-			"<leader>tf",
-			":lua require('neotest').run.run(vim.fn.expand('%'))<CR>",
-			{ noremap = true, silent = true }
-		) -- Runs all tests in the current file.
-		vim.api.nvim_set_keymap(
-			"n",
-			"<leader>td",
-			":lua require('neotest').run.run({strategy = 'dap'})<CR>",
-			{ noremap = true, silent = true }
-		) -- Debugs the nearest test (requires nvim-dap).
-		vim.api.nvim_set_keymap(
-			"n",
-			"<leader>ts",
-			":lua require('neotest').run.stop()<CR>",
-			{ noremap = true, silent = true }
-		) -- Stops the nearest running test.
-		vim.api.nvim_set_keymap(
-			"n",
-			"<leader>ta",
-			":lua require('neotest').run.attach()<CR>",
-			{ noremap = true, silent = true }
-		) -- Attaches to the nearest running test.
+		vim.keymap.set("n", "<leader>tn", function()
+			neotest.run.run()
+		end, { noremap = true, silent = true, desc = "Run nearest test" })
+		vim.keymap.set("n", "<leader>tf", function()
+			neotest.run.run(vim.fn.expand("%"))
+		end, { noremap = true, silent = true, desc = "Run all tests in file" })
+		vim.keymap.set("n", "<leader>td", function()
+			neotest.run.run({ strategy = "dap" })
+		end, { noremap = true, silent = true, desc = "Debug nearest test" })
+		vim.keymap.set("n", "<leader>ts", function()
+			neotest.run.stop()
+		end, { noremap = true, silent = true, desc = "Stop running test" })
+		vim.keymap.set("n", "<leader>ta", function()
+			neotest.run.attach()
+		end, { noremap = true, silent = true, desc = "Attach to running test" })
 
-		-- Keymaps for extra Neotest features
-		vim.api.nvim_set_keymap(
-			"n",
-			"<leader>tw",
-			":lua require('neotest').watch.watch()<CR>",
-			{ noremap = true, silent = true }
-		) -- Watch tests
-		vim.api.nvim_set_keymap(
-			"n",
-			"<leader>to",
-			":lua require('neotest').output.open({ enter = true })<CR>",
-			{ noremap = true, silent = true }
-		) -- Output window
-		vim.api.nvim_set_keymap(
-			"n",
-			"<leader>tp",
-			":lua require('neotest').output_panel.open()<CR>",
-			{ noremap = true, silent = true }
-		) -- Output panel
-		vim.api.nvim_set_keymap(
-			"n",
-			"<leader>tsu",
-			":lua require('neotest').summary.open()<CR>",
-			{ noremap = true, silent = true }
-		) -- Summary window
+		-- Extra Neotest features
+		vim.keymap.set("n", "<leader>tw", function()
+			neotest.watch.watch()
+		end, { noremap = true, silent = true, desc = "Watch test file" })
 
-		--Keymaps for summary and output toggle
-		vim.api.nvim_set_keymap(
-			"n",
-			"<leader>to",
-			":lua require('neotest').output_panel.toggle()<CR>",
-			{ noremap = true, silent = true }
-		) -- Toggle Output window
-		vim.api.nvim_set_keymap(
-			"n",
-			"<leader>tsu",
-			":lua require('neotest').summary.toggle()<CR>",
-			{ noremap = true, silent = true }
-		) -- Toggle Summary window
+		vim.keymap.set("n", "<leader>to", function()
+			neotest.output.open({ enter = true })
+		end, { noremap = true, silent = true, desc = "Open test output" })
+		vim.keymap.set("n", "<leader>tp", function()
+			neotest.output_panel.open()
+		end, { noremap = true, silent = true, desc = "Open output panel" })
+		vim.keymap.set("n", "<leader>tsu", function()
+			neotest.summary.open()
+		end, { noremap = true, silent = true, desc = "Open test summary" })
+
+		-- Toggle summary and output
+		vim.keymap.set("n", "<leader>to", function()
+			neotest.output_panel.toggle()
+		end, { noremap = true, silent = true, desc = "Toggle output panel" })
+		vim.keymap.set("n", "<leader>tsu", function()
+			neotest.summary.toggle()
+		end, { noremap = true, silent = true, desc = "Toggle test summary" })
 	end,
 }

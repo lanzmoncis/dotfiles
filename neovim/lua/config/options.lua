@@ -14,4 +14,3 @@ vim.o.shiftwidth = 2 -- The number of spaces inserted for each indentation (defa
 vim.o.tabstop = 2 -- Insert n spaces for a tab (default: 8)
 vim.o.expandtab = true -- Convert tabs to spaces (default: false)
 vim.opt.termguicolors = true -- Set termguicolors to enable highlight groups (default: false)
-vim.diagnostic.config({ virtual_text = false }) -- Make inline error default to false (default: false)

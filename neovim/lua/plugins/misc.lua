@@ -34,19 +34,33 @@ return {
 	{
 		-- Hints keybinds
 		"folke/which-key.nvim",
+		event = "VeryLazy",
+		opts = {
+			preset = "helix",
+			icons = {
+				rules = false,
+				breadcrumb = " ", -- symbol used in the command line area that shows your active key combo
+				separator = "󱦰  ", -- symbol used between a key and it's label
+				group = "󰹍 ", -- symbol prepended to a group
+			},
+			plugins = {
+				spelling = {
+					enabled = false,
+				},
+			},
+			win = {
+				height = {
+					max = math.huge,
+				},
+			},
+		},
 	},
 	{
+		-- comments plugin that works with tsx and jsx files
 		"folke/ts-comments.nvim",
 		opts = {},
 		event = "VeryLazy",
 		enabled = vim.fn.has("nvim-0.10.0") == 1,
-	},
-	{
-		-- Autoclose parentheses, brackets, quotes, etc.
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		config = true,
-		opts = {},
 	},
 	{
 		-- Highlight todo, notes, etc in comments
@@ -56,10 +70,47 @@ return {
 		opts = { signs = false },
 	},
 	{
+		-- Autoclose parentheses, brackets, quotes, etc.
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+		opts = {},
+	},
+	{
+		-- autotag plugin
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup({
+				opts = {
+					enable_close = true, -- Auto close tags
+					enable_rename = true, -- Auto rename pairs of tags
+					enable_close_on_slash = false, -- Auto close on trailing </
+				},
+			})
+		end,
+	},
+	{
+		"numToStr/Comment.nvim",
+		opts = {
+			-- add any options here
+		},
+	},
+	{
 		-- High-performance color highlighter
 		"norcalli/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup()
 		end,
+	},
+	{
+		"vyfor/cord.nvim",
+		build = ":Cord update",
+		-- opts = {}
+	},
+	{
+		"echasnovski/mini.icons",
+		enabled = true,
+		opts = {},
+		lazy = true,
 	},
 }

@@ -1,7 +1,3 @@
-require("core.options")
-require("core.keymaps")
-
--- Set up the Lazy plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -14,19 +10,15 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Set up plugins
 require("lazy").setup({
-	require("plugins.catppuccin"),
+	require("plugins.colorscheme"),
 	require("plugins.lualine"),
 	require("plugins.treesitter"),
-	require("plugins.telescope"),
 	require("plugins.lsp"),
-	require("plugins.autocompletion"),
-	require("plugins.autoformatting"),
 	require("plugins.gitsigns"),
-	require("plugins.indent_blankline"),
 	require("plugins.misc"),
-	require("plugins.alpha"),
-	require("plugins.autotag"),
 	require("plugins.neotest"),
-	require("plugins.comments"),
-	require("plugins.mini_nvim"),
+	require("plugins.snacks"),
+	require("plugins.conform"),
+	require("plugins.blink"),
+	require("plugins.noice"),
 })
