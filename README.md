@@ -4,6 +4,8 @@ This repository contains my personal configuration for various development tools
 
 • WezTerm - Terminal emulator
 
+• Ghostty - Terminal emulator
+
 • Starship - Shell prompt customization
 
 • Tmux - Terminal multiplexer
