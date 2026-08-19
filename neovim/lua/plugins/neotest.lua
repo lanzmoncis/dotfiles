@@ -9,6 +9,7 @@ return {
 		"nvim-neotest/neotest-go",
 		"nvim-neotest/neotest-jest",
 		"marilari88/neotest-vitest",
+		"nvim-neotest/neotest-python",
 	},
 	config = function()
 		local neotest = require("neotest")
@@ -29,6 +30,7 @@ return {
 						return vim.fn.getcwd()
 					end,
 				}),
+				require("neotest-python"),
 			},
 		})
 

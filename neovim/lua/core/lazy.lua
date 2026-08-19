@@ -11,7 +11,6 @@ vim.opt.rtp:prepend(lazypath)
 -- Set up plugins
 require("lazy").setup({
 	require("plugins.colorscheme"),
-	require("plugins.lualine"),
 	require("plugins.treesitter"),
 	require("plugins.lsp"),
 	require("plugins.gitsigns"),
@@ -20,5 +19,6 @@ require("lazy").setup({
 	require("plugins.snacks"),
 	require("plugins.conform"),
 	require("plugins.blink"),
-	require("plugins.noice"),
+	require("plugins.trouble"),
+	require("plugins.opencode"),
 })

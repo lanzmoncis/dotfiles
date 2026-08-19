@@ -1,5 +1,6 @@
 font-size = 14
-theme = GruvboxDarkHard
+font-family = loskeley Mono
+theme = Yukinord
 shell-integration-features = no-cursor,sudo,no-title
 cursor-style = block
 adjust-cell-height = 35%
@@ -11,7 +12,6 @@ window-padding-balance = true
 window-save-state = always
 macos-titlebar-style=transparent
 window-colorspace = "display-p3"
-# background = 1C2021
 
 macos-titlebar-proxy-icon = hidden
 title = " "

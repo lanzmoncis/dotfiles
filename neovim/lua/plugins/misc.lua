@@ -90,12 +90,6 @@ return {
 		end,
 	},
 	{
-		"numToStr/Comment.nvim",
-		opts = {
-			-- add any options here
-		},
-	},
-	{
 		-- High-performance color highlighter
 		"norcalli/nvim-colorizer.lua",
 		config = function()
@@ -108,10 +102,26 @@ return {
 		-- opts = {}
 	},
 	{
+		"echasnovski/mini.nvim",
+		version = "*",
+		config = function()
+			local statusline = require("mini.statusline")
+			statusline.setup({
+				use_icons = vim.g.have_nerd_font,
+				set_vim_settings = false,
+			})
+			---@diagnostic disable-next-line: duplicate-set-field
+			statusline.section_location = function()
+				return "%2l:%-2v"
+			end
+		end,
+	},
+	{
 		"echasnovski/mini.icons",
 		enabled = true,
 		opts = {},
-		lazy = true,
+		lazy = false,
+		priority = 1000,
 	},
 	{
 		"rachartier/tiny-inline-diagnostic.nvim",
